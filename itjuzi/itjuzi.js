@@ -22,8 +22,8 @@
     let names = ''
     for (const item of dom.querySelectorAll('.text-truncate')) {
       const text = item.innerText
-      text[0] === '[' ? names += text.split(' ')[1] : names += text //判断是不是首行 为[财务顾问]
-      names += ' '
+      text[0] === '[' ? names += text.replace(/\[.*?\]/g, '').slice(1) : names += text //判断行是否有tag元素
+      names += ';'
     }
     return names.slice(0, -1)
   }
